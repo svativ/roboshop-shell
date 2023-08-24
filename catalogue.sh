@@ -1,7 +1,7 @@
 echo -e "\e[35>>>>>>>>>>> Create Catalogue service <<<<<<<<<<\e[0m"
 cp catalogue.service /etc/systemd/system/catalogue.service
 
-echo -e "\e[35>>>>>>>>>>>  Create MongoDB Repo  <<<<<<<<<<<\e[0m"
+echo -e "\e[35>>>>>>>>>>> Create MongoDB Repo <<<<<<<<<<<\e[0m"
 
 cp mongo.repo /etc/yum.repos.d/mongo.repo
 
