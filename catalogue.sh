@@ -10,7 +10,7 @@ cd /app
 unzip /tmp/catalogue.zip
 cd /app
 npm install
-
+#Install MongoDB
 yum install mongodb-org-shell -y
 mongo --host mongodb.sdevops99.online </app/schema/catalogue.js
 
