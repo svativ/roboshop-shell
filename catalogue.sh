@@ -38,6 +38,9 @@ echo -e "\e[36m>>>>>>>>>>> Load catalogue Schema <<<<<<<<<<<\e[0m"
 mongo --host mongodb.sdevops99.online </app/schema/catalogue.js &>>/tmp/roboshop.log
 
 echo -e "\e[36m>>>>>>>>>>> Start Catalogue Service  <<<<<<<<<<<\e[0m"
-systemctl daemon-reload
-systemctl enable catalogue
-systemctl restart catalogue
+systemctl daemon-reload &>>/tmp/roboshop.log
+
+systemctl enable catalogue &>>/tmp/roboshop.log
+
+systemctl restart catalogue &>>/tmp/roboshop.log
+
