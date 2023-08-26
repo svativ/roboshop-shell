@@ -62,7 +62,7 @@ func_nodejs() {
 
    echo -e "\e[36m>>>>>>>>>>> Build ${component} Service   <<<<<<<<<<<\e[0m"
    mvn clean package &>>${log}
-   mv target/${component} -1.0.jar ${component} .jar
+   mv target/${component} -1.0.jar ${component} .jar &>>${log}
 
    echo -e "\e[36m>>>>>>>>>>> Install MySQL Client   <<<<<<<<<<<\e[0m"
    yum install mysql -y &>>${log}
