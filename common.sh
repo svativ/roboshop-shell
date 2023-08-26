@@ -62,13 +62,13 @@ func_nodejs() {
 
    echo -e "\e[36m>>>>>>>>>>> Build ${component} Service   <<<<<<<<<<<\e[0m"
    mvn clean package &>>${log}
-   mv target/${component} -1.0.jar ${component} .jar &>>${log}
+   mv target/${component} -1.0.jar ${component} .jar
 
    echo -e "\e[36m>>>>>>>>>>> Install MySQL Client   <<<<<<<<<<<\e[0m"
-   yum install mysql -y
+   yum install mysql -y &>>${log}
 
    echo -e "\e[36m>>>>>>>>>>> Load Schema   <<<<<<<<<<<\e[0m"
-   mysql -h mysql.sdevops99.online -uroot -pRoboShop@1 < /app/schema/${component}.sql
+   mysql -h mysql.sdevops99.online -uroot -pRoboShop@1 < /app/schema/${component}.sql &>>${log}
 
    func_systemd
  }
