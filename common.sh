@@ -20,9 +20,7 @@ func_systemd() {
 
   echo -e "\e[36m>>>>>>>>>>> Start ${component} Service  <<<<<<<<<<<\e[0m" | tee -a /tmp/roboshop.log
   systemctl daemon-reload &>>${log}
-
   systemctl enable ${component} &>>${log}
-
   systemctl restart ${component} &>>${log}
 }
 func_nodejs() {
