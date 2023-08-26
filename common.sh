@@ -1,3 +1,5 @@
+log=/tmp/roboshop.log
+
 func_apppreq() {
     echo -e "\e[36m>>>>>>>>>>> Create Application User <<<<<<<<<<<\e[0m"
     useradd roboshop &>>${log}
@@ -16,8 +18,7 @@ func_apppreq() {
     unzip /tmp/${component}.zip &>>${log}
     cd /app
 }
-func_systemd() {
-
+ func_systemd() {
   echo -e "\e[36m>>>>>>>>>>> Start ${component} Service  <<<<<<<<<<<\e[0m" | tee -a /tmp/roboshop.log
   systemctl daemon-reload &>>${log}
   systemctl enable ${component} &>>${log}
@@ -52,16 +53,16 @@ func_nodejs() {
  }
  func_java() {
    echo -e "\e[36m>>>>>>>>>>> Create ${component} Service  <<<<<<<<<<<\e[0m"
-   cp ${component}.service /etc/systemd/system/${component}.service
+   cp ${component}.service /etc/systemd/system/${component}.service &>>${log}
 
    echo -e "\e[36m>>>>>>>>>>> Install Maven  <<<<<<<<<<<\e[0m"
-   yum install maven -y
+   yum install maven -y &>>${log}
 
    func_apppreq
 
    echo -e "\e[36m>>>>>>>>>>> Build ${component} Service   <<<<<<<<<<<\e[0m"
-   mvn clean package
-   mv target/${component} -1.0.jar ${component} .jar
+   mvn clean package &>>${log}
+   mv target/${component} -1.0.jar ${component} .jar &>>${log}
 
    echo -e "\e[36m>>>>>>>>>>> Install MySQL Client   <<<<<<<<<<<\e[0m"
    yum install mysql -y
