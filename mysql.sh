@@ -1,5 +1,5 @@
 mysql_root_password= $1
-if [ -z "${mysql_root_Password}" ]; then
+if [ -z "${mysql_root_password}" ]; then
   echo INput Password Missing
   exit 1
 fi
