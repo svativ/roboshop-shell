@@ -33,7 +33,7 @@ func_apppreq() {
     func_exit_status
     echo -e "\e[36m>>>>>>>>>> Extract Application Content <<<<<<<<<<<\e[0m"
     cd /app &>>${log}
-    unzip /tmp/${component}.zip
+    unzip /tmp/${component}.zip &>>${log}
     func_exit_status
 
 }
