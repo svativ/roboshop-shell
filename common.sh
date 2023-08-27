@@ -9,8 +9,8 @@ func_exit_status() {
 }
 
 func_apppreq() {
-    echo -e "\e[36m>>>>>>>>>>> Create ${component} Service  <<<<<<<<<<<\e[0m"
-    cp ${component}.service /etc/systemd/system/${component}.service &>>${log}
+    echo -e "\e[36m>>>>>>>>>>> Create ${component} service <<<<<<<<<<<\e[0m"
+    cp  ${component}.service /etc/systemd/system/ ${component}.service &>>${log}
     func_exit_status
 
     echo -e "\e[36m>>>>>>>>>>> Create Application User <<<<<<<<<<<\e[0m"
@@ -20,6 +20,7 @@ func_apppreq() {
     fi
     func_exit_status
 
+
     echo -e "\e[36m>>>>>>>>>>> Cleanup Existing Application Content <<<<<<<<<<<\e[0m"
     rm -rf /app &>>${log}
     func_exit_status
@@ -28,7 +29,7 @@ func_apppreq() {
     mkdir /app &>>${log}
     func_exit_status
     echo -e "\e[36m>>>>>>>>>>> Download application content <<<<<<<<<<<\e[0m"
-    curl -o /tmp/${component}.zip https://roboshop-artifacts.s3.amazonaws.com/${component}.zip &>>${log}
+    curl -o /tmp/${component}.zip https://roboshop-artifacts.s3.amazonaws.com/${component}.zipc &>>${log}
     func_exit_status
     echo -e "\e[36m>>>>>>>>>> Extract Application Content <<<<<<<<<<<\e[0m"
     cd /app
