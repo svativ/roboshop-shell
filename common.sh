@@ -32,8 +32,8 @@ func_apppreq() {
     curl -o /tmp/${component}.zip https://roboshop-artifacts.s3.amazonaws.com/${component}.zipc &>>${log}
     func_exit_status
     echo -e "\e[36m>>>>>>>>>> Extract Application Content <<<<<<<<<<<\e[0m"
-    cd /app &>>${log}
-    unzip /tmp/${component}.zip
+    cd /app
+    unzip /tmp/${component}.zip &>>${log}
     func_exit_status
 
 }
