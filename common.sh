@@ -28,17 +28,19 @@ func_apppreq() {
   systemctl restart ${component} &>>${log}
 }
 func_schema_setup() {
-  if [ "${schema_type}" =="mongodb" ]; then
+  if [ "${schema_type}" == "mongodb" ]; then
     echo -e "\e[36m>>>>>>>>>>> Install Mongo Client <<<<<<<<<<<\e[0m" | tee -a /tmp/roboshop.log
     yum install mongodb-org-shell -y &>>${log}
 
     echo -e "\e[36m>>>>>>>>>>> Load user Schema <<<<<<<<<<<\e[0m" | tee -a /tmp/roboshop.log
     mongo --host mongodb.sdevops99.online </app/schema/${component}.js &>>${log}
   fi
- if  [ "${schema_type}" =="mysql" ]; then
+
+ if  [ "${schema_type}" == "mysql" ]; then
    echo -e "\e[36m>>>>>>>>>>> Install MySQL Client   <<<<<<<<<<<\e[0m"
    yum install mysql -y &>>${log}
-   echo -e "\e[36m>>>>>>>>>>> Load Schema   <<<<<<<<<<<\e[0m"  mysql -h mysql.sdevops99.online -uroot -pRoboShop@1 < /app/schema/${component}.sql &>>${log}
+   echo -e "\e[36m>>>>>>>>>>> Load Schema   <<<<<<<<<<<\e[0m"
+   mysql -h mysql.sdevops99.online -uroot -pRoboShop@1 < /app/schema/${component}.sql &>>${log}
  fi
 }
 func_nodejs() {
