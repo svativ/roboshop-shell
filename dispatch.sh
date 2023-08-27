@@ -1,4 +1,4 @@
 component=dispatch
-source coomon.sh
+source common.sh
 
 func_golang
