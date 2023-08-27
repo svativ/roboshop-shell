@@ -115,7 +115,7 @@ func_nodejs() {
     yum install python36 gcc python3-devel -y  &>>${log}
     func_exit_status
     func_apppreq
-
+    sed -i "s/rabbit_app_password/${rabbit_app_password}" /etc/systemd/system/${component}.service
     echo -e "\e[36m>>>>>>>>>>> Build ${component} Service   <<<<<<<<<<<\e[0m"
     pip3.6 install -r requirements.txt  &>>${log}
     func_systemd
