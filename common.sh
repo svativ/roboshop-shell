@@ -10,7 +10,7 @@ func_exit_status() {
 
 func_apppreq() {
     echo -e "\e[36m>>>>>>>>>>> Create ${component} service <<<<<<<<<<<\e[0m"
-    cp  ${component}.service /etc/systemd/system/ ${component}.service &>>${log}
+    cp  ${component}.service /etc/systemd/systemd/${component}.service &>>${log}
     func_exit_status
 
     echo -e "\e[36m>>>>>>>>>>> Create Application User <<<<<<<<<<<\e[0m"
@@ -32,8 +32,8 @@ func_apppreq() {
     curl -o /tmp/${component}.zip https://roboshop-artifacts.s3.amazonaws.com/${component}.zipc &>>${log}
     func_exit_status
     echo -e "\e[36m>>>>>>>>>> Extract Application Content <<<<<<<<<<<\e[0m"
-    cd /app
-    unzip /tmp/${component}.zip &>>${log}
+    cd /app &>>${log}
+    unzip /tmp/${component}.zip
     func_exit_status
 
 }
