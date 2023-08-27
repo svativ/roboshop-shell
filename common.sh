@@ -98,13 +98,13 @@ func_nodejs() {
  func_java() {
    echo -e "\e[36m>>>>>>>>>>> Install Maven  <<<<<<<<<<<\e[0m"
    yum install maven -y &>>${log}
-
+   func_exit_status
    func_apppreq
 
    echo -e "\e[36m>>>>>>>>>>> Build ${component} Service   <<<<<<<<<<<\e[0m"
    mvn clean package &>>${log}
    mv target/${component} -1.0.jar ${component} .jar &>>${log}
-
+   func_exit_status
    func_schema_setup
    func_systemd
  }
@@ -112,7 +112,7 @@ func_nodejs() {
  func_python() {
     echo -e "\e[36m>>>>>>>>>>> Build ${component} Service   <<<<<<<<<<<\e[0m"
     yum install python36 gcc python3-devel -y  &>>${log}
-
+    func_exit_status
     func_apppreq
 
     echo -e "\e[36m>>>>>>>>>>> Build ${component} Service   <<<<<<<<<<<\e[0m"
@@ -124,14 +124,14 @@ func_golang(){
 
   echo -e "\e[36m>>>>>>>>>>> Build ${component} Service   <<<<<<<<<<<\e[0m"
   yum install golang -y  &>>${log}
-
+  func_exit_status
   func_apppreq
 
   echo -e "\e[36m>>>>>>>>>>> Build ${component} Service   <<<<<<<<<<<\e[0m"
   go mod init dispatch  &>>${log}
   go get  &>>${log}
   go build  &>>${log}
-
+  func_exit_status
   func_systemd
 
 }
