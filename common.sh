@@ -8,7 +8,7 @@ log=/tmp/roboshop.log
     fi
 }
 
-func_exit_status_apppreq() {
+func_apppreq() {
     echo -e "\e[36m>>>>>>>>>>> Create ${component} Service  <<<<<<<<<<<\e[0m"
     cp ${component}.service /etc/systemd/system/${component}.service &>>${log}
     func_exit_statust_exit_status
@@ -33,14 +33,14 @@ func_exit_status_apppreq() {
     func_exit_statust_exit_status
 
 }
- func_exit_status_systemd() {
+ func_systemd() {
   echo -e "\e[36m>>>>>>>>>>> Start ${component} Service  <<<<<<<<<<<\e[0m" | tee -a /tmp/roboshop.log
   systemctl daemon-reload &>>${log}
   systemctl enable ${component} &>>${log}
   systemctl restart ${component} &>>${log}
   func_exit_statust_exit_status
 }
-func_exit_status_schema_setup() {
+func_schema_setup() {
   if [ "${schema_type}" == "mongodb" ]; then
     echo -e "\e[36m>>>>>>>>>>> Install Mongo Client <<<<<<<<<<<\e[0m" | tee -a /tmp/roboshop.log
     yum install mongodb-org-shell -y &>>${log}
@@ -63,7 +63,7 @@ func_exit_status_schema_setup() {
 
 }
 
-func_exit_status_nodejs() {
+func_nodejs() {
   log=/tmp/roboshop.log
 
   echo -e "\e[36m>>>>>>>>>>> Create MongoDB Repo <<<<<<<<<<<\e[0m"
@@ -89,7 +89,7 @@ func_exit_status_nodejs() {
   func_exit_status_systemd
  }
 
- func_exit_status_java() {
+ func_java() {
    echo -e "\e[36m>>>>>>>>>>> Install Maven  <<<<<<<<<<<\e[0m"
    yum install maven -y &>>${log}
 
@@ -103,7 +103,7 @@ func_exit_status_nodejs() {
    func_exit_status_systemd
  }
 
- func_exit_status_python() {
+ func_python() {
     echo -e "\e[36m>>>>>>>>>>> Build ${component} Service   <<<<<<<<<<<\e[0m"
     yum install python36 gcc python3-devel -y  &>>${log}
 
@@ -114,7 +114,7 @@ func_exit_status_nodejs() {
     func_exit_status_systemd
  }
 
-func_exit_status_golang(){
+func_golang(){
 
   echo -e "\e[36m>>>>>>>>>>> Build ${component} Service   <<<<<<<<<<<\e[0m"
   yum install golang -y  &>>${log}
