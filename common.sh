@@ -88,3 +88,19 @@ func_schema_setup
     pip3.6 install -r requirements.txt  &>>${log}
     func_systemd
  }
+
+func_golang(){
+
+  echo -e "\e[36m>>>>>>>>>>> Build ${component} Service   <<<<<<<<<<<\e[0m"
+  yum install golang -y  &>>${log}
+
+  func_apppreq
+
+  echo -e "\e[36m>>>>>>>>>>> Build ${component} Service   <<<<<<<<<<<\e[0m"
+  go mod init dispatch  &>>${log}
+  go get  &>>${log}
+  go build  &>>${log}
+
+  func_systemd
+
+}
