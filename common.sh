@@ -54,7 +54,7 @@ func_schema_setup() {
  if [ "${schema_type}" == "mysql" ]; then
    echo -e "\e[36m>>>>>>>>>>> Install MySQL Client   <<<<<<<<<<<\e[0m"
    yum install mysql -y &>>${log}
-   funct_exit_status
+   func_exit_status
 
    echo -e "\e[36m>>>>>>>>>>> Load Schema   <<<<<<<<<<<\e[0m"
    mysql -h mysql.sdevops99.online -uroot -pRoboShop@1 < /app/schema/${component}.sql &>>${log}
