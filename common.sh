@@ -31,12 +31,9 @@ func_apppreq() {
     func_exit_status
 
     echo -e "\e[36m>>>>>>>>>>>>  Extract Application Content  <<<<<<<<<<<<\e[0m"
-    cd /app
-    unzip /tmp/${component}.zip &>>${log}
-
-
-    func_exit_status
-
+     cd /app
+     unzip /tmp/${component}.zip &>>${log}
+     func_exit_status
 }
  func_systemd() {
   echo -e "\e[36m>>>>>>>>>>> Start ${component} Service  <<<<<<<<<<<\e[0m" | tee -a /tmp/roboshop.log
