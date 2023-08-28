@@ -47,14 +47,8 @@ func_apppreq() {
   func_exit_status
 }
 func_schema_setup() {
-  #if [ "${schema_type}" == "mongodb" ]; then
-     # echo -e "\e[36m>>>>>>>>>>>>  INstall Mongo Client  <<<<<<<<<<<<\e[0m"  | tee -a /tmp/roboshop.log
-     # yum install mongodb-org-shell -y &>>${log}
-    #func_exit_status
 
-    #echo -e "\e[36m>>>>>>>>>>>>  Load User Schema  <<<<<<<<<<<<\e[0m"  | tee -a /tmp/roboshop.log
-   # mongo --host mongodb.sdevops99.online </app/schema/${component}.js &>>${log}
-     if [ "${schema_type}" == "mongodb" ]; then
+  if [ "${schema_type}" == "mongodb" ]; then
         echo -e "\e[36m>>>>>>>>>>>>  INstall Mongo Client  <<<<<<<<<<<<\e[0m"  | tee -a /tmp/roboshop.log
         yum install mongodb-org-shell -y &>>${log}
         func_exit_status
