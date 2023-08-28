@@ -88,7 +88,7 @@ func_nodejs() {
   func_apppreq
 
   echo -e "\e[36m>>>>>>>>>>> Download Nodejs Client <<<<<<<<<<<\e[0m"
-
+  cd /app  &>>${log}
   npm install &>>${log}
   func_exit_status
 
