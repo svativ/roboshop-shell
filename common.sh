@@ -100,17 +100,22 @@ func_nodejs() {
  }
 
  func_java() {
-   echo -e "\e[36m>>>>>>>>>>> Install Maven  <<<<<<<<<<<\e[0m"
-   yum install maven -y &>>${log}
-   func_exit_status
-   func_apppreq
 
-   echo -e "\e[36m>>>>>>>>>>> Build ${component} Service   <<<<<<<<<<<\e[0m"
-   mvn clean package &>>${log}
-   mv target/${component} -1.0.jar ${component} .jar &>>${log}
-   func_exit_status
-   func_schema_setup
-   func_systemd
+    echo -e "\e[36m>>>>>>>>>>>>  Install Maven   <<<<<<<<<<<<\e[0m"
+     yum install maven -y &>>${log}
+     func_exit_status
+
+     func_apppreq
+
+     echo -e "\e[36m>>>>>>>>>>>>  Build ${component} Service   <<<<<<<<<<<<\e[0m"
+     mvn clean package &>>${log}
+     mv target/${component}-1.0.jar ${component}.jar &>>${log}
+     func_exit_status
+
+     func_schema_setup
+
+     func_systemd
+
  }
 
  func_python() {
@@ -124,6 +129,7 @@ func_nodejs() {
     pip3.6 install -r requirements.txt &>>${log}
     func_exit_status
     func_systemd
+
  }
 
 func_golang(){
