@@ -1,5 +1,5 @@
 component=catalogue
-schema_type=mondodb
+schema_type=mongodb
 source common.sh
 
 func_nodejs
