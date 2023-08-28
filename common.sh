@@ -30,7 +30,7 @@ func_apppreq() {
     curl -o /tmp/${component}.zip https://roboshop-artifacts.s3.amazonaws.com/${component}.zipc &>>${log}
     func_exit_status
     echo -e "\e[36m>>>>>>>>>> Extract Application Content <<<<<<<<<<<\e[0m"
-
+    cd /app
     unzip /tmp/${component}.zip &>>${log}
     func_exit_status
 
@@ -47,12 +47,10 @@ func_schema_setup() {
   if [ "${schema_type}" == "mongodb" ]; then
     echo -e "\e[36m>>>>>>>>>>> Install Mongo Client <<<<<<<<<<<\e[0m" | tee -a /tmp/roboshop.log
     yum install mongodb-org-shell -y &>>${log}
-
     func_exit_status
 
     echo -e "\e[36m>>>>>>>>>>> Load user Schema <<<<<<<<<<<\e[0m" | tee -a /tmp/roboshop.log
     mongo --host mongodb.sdevops99.online </app/schema/${component}.js &>>${log}
-
     func_exit_status
   fi
 
