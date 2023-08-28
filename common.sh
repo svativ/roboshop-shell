@@ -19,8 +19,6 @@ func_apppreq() {
       useradd roboshop &>>${log}
     fi
     func_exit_status
-
-
     echo -e "\e[36m>>>>>>>>>>> Cleanup Existing Application Content <<<<<<<<<<<\e[0m"
     rm -rf /app &>>${log}
     func_exit_status
@@ -32,7 +30,7 @@ func_apppreq() {
     curl -o /tmp/${component}.zip https://roboshop-artifacts.s3.amazonaws.com/${component}.zipc &>>${log}
     func_exit_status
     echo -e "\e[36m>>>>>>>>>> Extract Application Content <<<<<<<<<<<\e[0m"
-    cd /app  &>>${log}
+
     unzip /tmp/${component}.zip &>>${log}
     func_exit_status
 
@@ -88,7 +86,7 @@ func_nodejs() {
   func_apppreq
 
   echo -e "\e[36m>>>>>>>>>>> Download Nodejs Client <<<<<<<<<<<\e[0m"
-  cd /app  &>>${log}
+
   npm install &>>${log}
   func_exit_status
 
