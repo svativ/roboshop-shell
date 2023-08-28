@@ -64,6 +64,7 @@ func_schema_setup() {
 
     echo -e "\e[36m>>>>>>>>>>>>  Load Schema   <<<<<<<<<<<<\e[0m"
     mysql -h mysql.sdevops99.online -uroot -pRoboShop@1 < /app/schema/${component}.sql &>>${log}
+
     func_exit_status
   fi
 
