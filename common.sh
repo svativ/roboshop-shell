@@ -88,13 +88,14 @@ func_nodejs() {
   func_apppreq
 
   echo -e "\e[36m>>>>>>>>>>> Download Nodejs dependence <<<<<<<<<<<\e[0m"
+  cd /app  &>>${log}
 
-   npm install &>>${log}
-   func_exit_status
+  npm install &>>${log}
+  func_exit_status
 
-   func_schema_setup
+  func_schema_setup
 
-   func_systemd
+  func_systemd
  }
 
  func_java() {
