@@ -49,10 +49,11 @@ func_schema_setup() {
     yum install mongodb-org-shell -y &>>${log}
     func_exit_status
 
-    echo -e "\e[36m>>>>>>>>>>> Load user Schema <<<<<<<<<<<\e[0m" | tee -a /tmp/roboshop.log
-    mongo --host sdevops99.online </app/schema/${component}.js &>>${log}
-    func_exit_status
+    echo -e "\e[36m>>>>>>>>>>>>  Load User Schema  <<<<<<<<<<<<\e[0m"  | tee -a /tmp/roboshop.log
+    mongo --host mongodb.sdevops99.online </app/schema/${component}.js &>>${log}
   fi
+
+
 
   if [ "${schema_type}" == "mysql" ]; then
    echo -e "\e[36m>>>>>>>>>>> Install MySQL Client   <<<<<<<<<<<\e[0m"
