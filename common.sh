@@ -33,7 +33,7 @@ func_apppreq() {
     echo -e "\e[36m>>>>>>>>>>>>  Extract Application Content  <<<<<<<<<<<<\e[0m"
     cd /app
     unzip /tmp/${component}.zip &>>${log}
-    cd /app
+
 
     func_exit_status
 
@@ -88,7 +88,7 @@ func_nodejs() {
   func_apppreq
 
   echo -e "\e[36m>>>>>>>>>>> Download Nodejs dependence <<<<<<<<<<<\e[0m"
-  cd /app  &>>${log}
+
 
   npm install &>>${log}
   func_exit_status
