@@ -1,4 +1,6 @@
 source common.sh
+
+
 echo -e "\e[36m>>>>>>>>>>> Install Nginx <<<<<<<<<<<\e[0m"
 yum install nginx -y  &>>${log}
 func_exit_status
@@ -26,4 +28,7 @@ echo -e "\e[36m>>>>>>>>>>> Start Nginx Service <<<<<<<<<<<\e[0m"
 systemctl enable nginx  &>>${log}
 systemctl restart nginx  &>>${log}
 func_exit_status
+
+
+
 
