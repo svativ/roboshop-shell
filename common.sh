@@ -70,30 +70,27 @@ func_schema_setup() {
 
 }
 
-
 func_nodejs() {
   log=/tmp/roboshop.log
 
-  echo -e "\e[36m>>>>>>>>>>> Create MongoDB Repo <<<<<<<<<<<\e[0m"
-  cp mongo.repo /etc/yum.repos.d/mongo.repo &>>${log}
-  func_exit_status
+ echo -e "\e[36m>>>>>>>>>>> Create MongoDB Repo <<<<<<<<<<<\e[0m"
+ cp mongo.repo /etc/yum.repos.d/mongo.repo &>>${log}
+ func_exit_status
 
-  echo -e "\e[36m>>>>>>>>>>> Install NodeJS Repo <<<<<<<<<<<\e[0m"
-  curl -sL https://rpm.nodesource.com/setup_lts.x | bash &>>${log}
-  func_exit_status
+ echo -e "\e[36m>>>>>>>>>>> Install NodeJS Repo <<<<<<<<<<<\e[0m
+ curl -sL https://rpm.nodesource.com/setup_lts.x | bash &>>${log}
+ func_exit_status
 
-  echo -e "\e[36m>>>>>>>>>>> Install NodeJS <<<<<<<<<\e[0m"
-  yum install nodejs -y &>>${log}
-  func_exit_status
+ echo -e"\e[36m>>>>>>>>>>> Install NodeJS <<<<<<<<<\e[0m"
+ yum install nodejs -y &>>${log}
+ func_exit_status
 
-  func_apppreq
+ func_apppreq
 
+ echo -e "\e[36m>>>>>>>>>>>>  Download NodeJS Dependencies  <<<<<<<<<<<<\e[0m"
+ npm install &>>${log}
+ func_exit_status
 
-  echo -e "\e[36m>>>>>>>>>>>>  Download NodeJS Dependencies  <<<<<<<<<<<<\e[0m"
-  npm install &>>${log}
-  func_exit_status
-
-  func_schema_setup
 
   func_systemd
  }
