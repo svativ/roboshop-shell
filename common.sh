@@ -97,8 +97,7 @@ func_nodejs() {
   }
 
  func_java() {
-
-    echo -e "\e[36m>>>>>>>>>>>>  Install Maven   <<<<<<<<<<<<\e[0m"
+     echo -e "\e[36m>>>>>>>>>>>>  Install Maven   <<<<<<<<<<<<\e[0m"
      yum install maven -y &>>${log}
      func_exit_status
 
